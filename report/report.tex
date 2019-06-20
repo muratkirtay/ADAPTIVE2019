@@ -1,0 +1,153 @@
+% Credits are indicated where needed. The general idea is based on a template by Vel (vel@LaTeXTemplates.com) and Frits Wenneker.
+
+\documentclass[11pt, a4paper]{article} % General settings in the beginning (defines the document class of your paper)
+% 11pt = is the font size
+% A4 is the paper size
+% “article” is your document class
+
+%----------------------------------------------------------------------------------------
+%	Packages
+%----------------------------------------------------------------------------------------
+
+% Necessary
+\usepackage[german,english]{babel} % English and German language 
+\usepackage{booktabs} % Horizontal rules in tables 
+% For generating tables, use “LaTeX” online generator (https://www.tablesgenerator.com)
+\usepackage{comment} % Necessary to comment several paragraphs at once
+\usepackage[utf8]{inputenc} % Required for international characters
+\usepackage[T1]{fontenc} % Required for output font encoding for international characters
+
+% Might be helpful
+\usepackage{amsmath,amsfonts,amsthm} % Math packages which might be useful for equations
+\usepackage{tikz} % For tikz figures (to draw arrow diagrams, see a guide how to use them)
+\usepackage{tikz-cd}
+\usetikzlibrary{positioning,arrows} % Adding libraries for arrows
+\usetikzlibrary{decorations.pathreplacing} % Adding libraries for decorations and paths
+\usepackage{tikzsymbols} % For amazing symbols ;) https://mirror.hmc.edu/ctan/graphics/pgf/contrib/tikzsymbols/tikzsymbols.pdf 
+\usepackage{blindtext} % To add some blind text in your paper
+
+
+%---------------------------------------------------------------------------------
+% Additional settings
+%---------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------------------
+% Define your margins
+\usepackage{geometry} % Necessary package for defining margins
+
+\geometry{
+	top=2cm, % Defines top margin
+	bottom=2cm, % Defines bottom margin
+	left=2.2cm, % Defines left margin
+	right=2.2cm, % Defines right margin
+	includehead, % Includes space for a header
+	%includefoot, % Includes space for a footer
+	%showframe, % Uncomment if you want to show how it looks on the page 
+}
+
+\setlength{\parindent}{15pt} % Adjust to set you indent globally 
+
+%---------------------------------------------------------------------------------
+% Define your spacing
+\usepackage{setspace} % Required for spacing
+% Two options:
+\linespread{1.5}
+%\onehalfspacing % one-half-spacing linespread
+
+%----------------------------------------------------------------------------------------
+% Define your fonts
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+
+\usepackage{XCharter} % Use the XCharter font
+
+
+%---------------------------------------------------------------------------------
+% Define your headers and footers
+
+\usepackage{fancyhdr} % Package is needed to define header and footer
+\pagestyle{fancy} % Allows you to customize the headers and footers
+
+%\renewcommand{\sectionmark}[1]{\markboth{#1}{}} % Removes the section number from the header when \leftmark is used
+
+% Headers
+\lhead{} % Define left header
+\chead{\textit{}} % Define center header - e.g. add your paper title
+\rhead{} % Define right header
+
+% Footers
+\lfoot{} % Define left footer
+\cfoot{\footnotesize \thepage} % Define center footer
+\rfoot{ } % Define right footer
+
+%---------------------------------------------------------------------------------
+%	Add information on bibliography
+\usepackage{natbib} % Use natbib for citing
+\usepackage{har2nat} % Allows to use harvard package with natbib https://mirror.reismil.ch/CTAN/macros/latex/contrib/har2nat/har2nat.pdf
+
+% For citing with natbib, you may want to use this reference sheet: 
+% http://merkel.texture.rocks/Latex/natbib.php
+
+\begin{document}
+This report presents the performing the methods proposed in our study with different parameters: learning rate ($\mu$) and discount factor ($\gamma$). We prepared this report to show the conclusions of the study will remain the same by changing the parameters of the temporal difference learning algorithm. Here we follow a grid search strategy by fixing the discount factor and searching over a set of learning rate. We confirm that a similar result can also be achieved by searching different adjustment factor.
+
+\begin{table*}[h]
+\small\sf\centering 
+\begin{tabular}{lcccccccc} 
+\toprule
+Steps & Normalized reward & Standard deviation & Wrong actions& Correct actions & X & C & X-C-3-5 & Others  \\
+\midrule
+$200$ & $0.347$ & $16.3$  &$4.5\%$  & $95.5\%$ & $5$  & $2$ & $1$ & $2$\\ 
+$300$ & $0.362$ & $13.2$  &$4.5\%$  & $95.5\%$ & $3$  & $1$ & $4$ & $2$\\ 
+$400$ & $0.409$ & $15.5$  &$1.5\%$  & $98.5\%$ & $2$  & $-$ & $7$ & $1$\\  
+$500$ & $0.481$ & $12.8$  &$1.5\%$  & $98.5\%$ & $2$  & $5$ & $3$ & $-$\\ 
+$600$ & $0.444$ & $25.7$  &$1.0\%$  & $99.0\%$ & $1$  & $3$ & $6$ & $-$\\ 
+$1000$ & $0.479$ & $35.3$ &$-$  & $100\%$ & $4$  & $1$ & $5$ & $-$\\ \hline
+\end{tabular} 
+\caption{Simulated agent experiment results for all iteration with 10 repetitions. In these experiments, the $\mu$ and $\gamma$ variables are set to $0.7$ and $0.4$.}
+\label{reward_cycle} 
+\end{table*} 
+
+
+\begin{table*}[h]
+\small\sf\centering 
+\begin{tabular}{lcccccccc} 
+\toprule
+Steps & Normalized reward & Standard deviation & Wrong actions& Correct actions&  X & C & X-C-3-5 & Others  \\
+\midrule
+$200$ & $0.323$ & $16.1$  &$20.5\%$  & $79.5\%$& $2$  & $2$ & $5$ & $1$\\ 
+$300$ & $0.425$ & $21.8$  &$18.5\%$  & $81.5\%$& $3$  & $1$ & $6$ & $-$\\ 
+$400$ & $0.401$ & $12.7$  &$19.5\%$  & $80.5\%$& $4$  & $-$ & $6$ & $-$\\  
+$500$ & $0.447$ & $23.3$  &$17.0\%$  & $83.0\%$& $5$  & $2$ & $3$ & $-$\\ 
+$600$ & $0.466$ & $29.7$  &$17.5\%$  & $82.5 \%$& $6$  & $1$ & $3$ & $-$\\ 
+$1000$ & $0.489$ & $41.7$ &$16.0\%$  & $84.0\%$& $2$  & $3$ & $5$ & $-$\\ \hline
+\end{tabular} 
+\caption{Simulated agent experiment results for all iteration with 10 repetitions. In these experiments, the $\mu$ and $\gamma$ variables are set to $0.5$ and $0.4$.}
+\label{reward_cycle} 
+\end{table*} 
+
+
+\begin{table*}[h]
+\small\sf\centering 
+\begin{tabular}{lcccccccc} 
+\toprule
+Steps & Normalized reward & Standard deviation & Wrong actions& Correct actions & X & C & X-C-3-5 & Others  \\
+\midrule
+$200$ & $0.339$ & $17.3$  &$24.0\%$  & $76.0\%$ & $2$  & $1$ & $4$ & $3$\\ 
+$300$ & $0.368$ & $14.4$  &$18.0\%$  & $82.0\%$ & $1$  & $2$ & $5$ & $2$\\ 
+$400$ & $0.420$ & $19.5$  &$21.0\%$  & $79.0\%$ & $1$  & $-$ & $4$ & $5$\\  
+$500$ & $0.399$ & $24.5$  &$12.5\%$  & $87.5\%$ & $1$  & $3$ & $6$ & $-$\\ 
+$600$ & $0.450$ & $19.1$  &$19.0\%$  & $81.0\%$ & $5$  & $1$ & $4$ & $-$\\ 
+$1000$ & $0.485$ & $26.9$ &$14.0\%$  & $86.0\%$ & $-$  & $2$ & $5$ & $3$\\ \hline
+\end{tabular} 
+\caption{Simulated agent experiment results for all iteration with 10 repetitions. In these experiments, the $\mu$ and $\gamma$ variables are set to $0.9$ and $0.4$.}
+\label{reward_cycle} 
+\end{table*} 
+
+
+
+
+
+
+
+\end{document}
