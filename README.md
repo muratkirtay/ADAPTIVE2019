@@ -10,4 +10,5 @@ A repostiory for reproducing the submitted results for Journal of Adaptive Behav
 + **DATA:** The final results and experiment file in *.mat* format. 
 + **Logs:** Various logs both for the experiment and intermediate steps to evaluate results.  
 + **iCubExperiment.mp4:** A video to show the robotic agent experiment. 
++ **report:** This folder contains the resultd for different learning rates in table format.   
 
